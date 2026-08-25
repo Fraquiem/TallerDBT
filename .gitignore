@@ -1,0 +1,6 @@
+config/.env
+config/.user.yml
+ventas_dbt/logs/
+ventas_dbt/target/
+ventas_dbt/dbt_packages/
+*.duckdb.wal

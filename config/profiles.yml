@@ -1,0 +1,15 @@
+ventas_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('VENTAS_DUCKDB_PATH') }}"
+      schema: main
+      threads: 4
+      extensions:
+        - postgres
+      attach:
+        - path: "postgresql://{{ env_var('VENTAS_PG_USER') }}:{{ env_var('VENTAS_PG_PASSWORD') }}@{{ env_var('VENTAS_PG_HOST') }}:{{ env_var('VENTAS_PG_PORT') }}/{{ env_var('VENTAS_PG_DATABASE') }}"
+          type: postgres
+          alias: postgres_oltp
+          read_only: true

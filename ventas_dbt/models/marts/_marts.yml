@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: dim_cliente
+    columns:
+      - name: cliente_sk
+        data_tests: [not_null, unique]
+
+  - name: dim_empleado
+    columns:
+      - name: empleado_sk
+        data_tests: [not_null, unique]
+
+  - name: dim_producto
+    columns:
+      - name: producto_sk
+        data_tests: [not_null, unique]
+
+  - name: dim_fecha
+    columns:
+      - name: fecha_sk
+        data_tests: [not_null, unique]
+
+  - name: fact_ventas
+    columns:
+      - name: venta_sk
+        data_tests: [not_null, unique]
+      - name: cliente_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_cliente')
+                field: cliente_sk
+      - name: empleado_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_empleado')
+                field: empleado_sk
+      - name: producto_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_producto')
+                field: producto_sk
+      - name: fecha_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_fecha')
+                field: fecha_sk

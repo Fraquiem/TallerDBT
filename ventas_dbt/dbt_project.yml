@@ -1,0 +1,15 @@
+name: ventas_dbt
+version: 1.0.0
+config-version: 2
+
+profile: ventas_dbt
+
+model-paths: ["models"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  ventas_dbt:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
