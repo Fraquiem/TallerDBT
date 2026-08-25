@@ -1,4 +1,4 @@
-
+Hecho por: Emanuel Quintero y Sebastian Perez
 
 # 1. Introducción e instalación
 
